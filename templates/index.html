@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GA Nurse Jobs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#f8f6f2;--surface:#fff;--text:#1a1a1a;--muted:#6b6560;--accent:#2a7d5f;--accent-lt:#e8f5ee;--warm:#d4763c;--warm-lt:#fef3eb;--border:#e8e4de;--r:12px}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+        .c{max-width:780px;margin:0 auto;padding:0 20px}
+        header{padding:48px 0 32px;text-align:center}
+        .badge{display:inline-block;background:var(--accent-lt);color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:16px}
+        h1{font-family:'Fraunces',Georgia,serif;font-size:clamp(28px,5vw,40px);font-weight:700;line-height:1.15;margin-bottom:8px}
+        header p{color:var(--muted);font-size:15px}
+        .stats{display:flex;gap:12px;justify-content:center;margin:24px 0 32px;flex-wrap:wrap}
+        .stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 24px;text-align:center;min-width:140px}
+        .stat-n{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--accent)}
+        .stat-n.w{color:var(--warm)}
+        .stat-l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+        .st{font-family:'Fraunces',serif;font-size:22px;font-weight:700;margin:40px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+        .nb{background:var(--warm);color:#fff;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;vertical-align:middle;margin-left:8px}
+        .jc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;margin-bottom:12px;transition:box-shadow .2s,transform .15s}
+        .jc:hover{box-shadow:0 2px 8px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06);transform:translateY(-1px)}
+        .jc.new{border-left:4px solid var(--warm)}
+        .jt{font-weight:700;font-size:16px;margin-bottom:4px}
+        .jco{font-weight:500;color:var(--accent);font-size:14px}
+        .jm{display:flex;gap:16px;margin-top:8px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+        .jd{margin-top:10px;font-size:14px;color:var(--muted);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+        .ja{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+        .ba{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;transition:background .15s}
+        .ba:hover{background:#1f6349}
+        .tag{display:inline-block;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px}
+        .tp{background:var(--warm-lt);color:var(--warm)}.tn{background:var(--warm);color:#fff}
+        .es{text-align:center;padding:48px 20px;color:var(--muted)}
+        .si{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;margin:32px 0;font-size:13px;color:var(--muted)}
+        .si summary{cursor:pointer;font-weight:600;color:var(--text);font-size:14px}
+        .si .dg{margin-top:12px;display:grid;grid-template-columns:120px 1fr;gap:6px 12px}
+        .si .lb{font-weight:600;color:var(--text)}
+        footer{text-align:center;padding:40px 0;font-size:13px;color:var(--muted)}
+        .fb{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+        .fb button{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;font-family:inherit;color:var(--text)}
+        .fb button:hover{border-color:var(--accent);color:var(--accent)}
+        .fb button.a{background:var(--accent);color:#fff;border-color:var(--accent)}
+        @media(max-width:600px){header{padding:32px 0 20px}.stat{min-width:110px;padding:12px 16px}.jc{padding:16px}.jm{gap:8px}}
+    </style>
+</head>
+<body>
+<div class="c">
+    <header>
+        <div class="badge">Auto-updated daily</div>
+        <h1>GA Nurse Jobs</h1>
+        <p>PRN &amp; Per Diem &mdash; Infection Control &amp; Infectious Disease</p>
+        <p style="font-size:13px;margin-top:4px">South &amp; Central Georgia</p>
+    </header>
+    <div class="stats">
+        <div class="stat"><div class="stat-n w">{{ new_count }}</div><div class="stat-l">New Today</div></div>
+        <div class="stat"><div class="stat-n">{{ total_count }}</div><div class="stat-l">Total Active</div></div>
+        <div class="stat"><div class="stat-n" style="font-size:16px;padding-top:6px">{{ scan_time.split(' at ')[0] }}</div><div class="stat-l">Last Scan</div></div>
+    </div>
+
+    {% if new_jobs %}
+    <div class="st">New Listings <span class="nb">NEW</span></div>
+    {% for job in new_jobs %}
+    <div class="jc new">
+        <div class="jt">{{ job.title }}</div>
+        <div class="jco">{{ job.company_name }}</div>
+        <div class="jm"><span>&#128205; {{ job.location }}</span><span>{{ job.via }}</span></div>
+        {% if job.description_snippet %}<div class="jd">{{ job.description_snippet }}</div>{% endif %}
+        <div class="ja">
+            {% if job.apply_link %}<a href="{{ job.apply_link }}" target="_blank" rel="noopener" class="ba">Apply &rarr;</a>{% endif %}
+            <span class="tag tn">NEW</span>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="st">All Active Listings</div>
+
+    {% if all_jobs %}
+    <div class="fb">
+        <button class="a" onclick="f('all')">All ({{ total_count }})</button>
+        <button onclick="f('macon')">Macon</button>
+        <button onclick="f('albany')">Albany</button>
+        <button onclick="f('valdosta')">Valdosta</button>
+        <button onclick="f('prn')">PRN Only</button>
+    </div>
+    {% for job in all_jobs %}
+    <div class="jc" data-l="{{ job.location | lower }}" data-t="{{ job.title | lower }}">
+        <div class="jt">{{ job.title }}</div>
+        <div class="jco">{{ job.company_name }}</div>
+        <div class="jm"><span>&#128205; {{ job.location }}</span><span>{{ job.via }}</span></div>
+        {% if job.description_snippet %}<div class="jd">{{ job.description_snippet }}</div>{% endif %}
+        <div class="ja">
+            {% if job.apply_link %}<a href="{{ job.apply_link }}" target="_blank" rel="noopener" class="ba">Apply &rarr;</a>{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="es"><p>No matching jobs found yet.</p><p>The scanner runs daily &mdash; check back tomorrow!</p></div>
+    {% endif %}
+
+    <details class="si">
+        <summary>&#128269; What we're searching for</summary>
+        <div class="dg">
+            <span class="lb">Areas:</span><span>{% for loc in locations %}{{ loc.name }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+            <span class="lb">Queries:</span><span>{% for q in queries %}{{ q }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+            <span class="lb">Frequency:</span><span>Daily at 7:00 AM ET</span>
+        </div>
+    </details>
+    <footer><p>Powered by GitHub Actions</p><p style="margin-top:4px"><a href="https://github.com/ClayNelson/ga-nurse-jobs" style="color:var(--accent)">View source</a></p></footer>
+</div>
+<script>
+function f(x){document.querySelectorAll('.jc').forEach(c=>{const l=c.dataset.l||'',t=c.dataset.t||'';c.style.display=x==='all'?'':x==='prn'?(t.includes('prn')||t.includes('per diem')?'':'none'):(l.includes(x)?'':'none')});document.querySelectorAll('.fb button').forEach(b=>b.classList.remove('a'));event.target.classList.add('a')}
+</script>
+</body>
+</html>
