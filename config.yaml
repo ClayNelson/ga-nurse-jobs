@@ -24,27 +24,51 @@ locations:
 
 # Search queries — these get combined with each location
 search_queries:
+  # Infection control / infectious disease
   - "PRN infection control nurse"
   - "PRN infectious disease nurse"
   - "PRN infection preventionist"
   - "per diem infection control nurse"
-  - "PRN nurse hospital"
-  - "PRN nurse nursing home"
   - "infection preventionist"
   - "infection control RN"
+  # Acute care
+  - "PRN acute care nurse"
+  - "PRN RN acute care"
+  - "per diem acute care nurse"
+  - "PRN hospital nurse"
+  - "PRN med surg nurse"
+  - "PRN ICU nurse"
+  - "PRN emergency room nurse"
+  - "PRN telemetry nurse"
+  - "PRN stepdown nurse"
 
 # Keywords — a result must contain at least one of these to be included
 keywords:
+  # Infection control
   - "infection"
   - "infectious"
   - "infection control"
   - "infection prevention"
   - "IP nurse"
-  - "PRN"
-  - "per diem"
   - "epidemiology"
   - "communicable disease"
   - "antimicrobial stewardship"
+  # Acute care
+  - "acute care"
+  - "med surg"
+  - "medical surgical"
+  - "ICU"
+  - "intensive care"
+  - "critical care"
+  - "emergency"
+  - "ER nurse"
+  - "telemetry"
+  - "stepdown"
+  - "progressive care"
+  - "PCU"
+  # General PRN/per diem
+  - "PRN"
+  - "per diem"
 
 # Major employers to highlight in results
 highlight_employers:
