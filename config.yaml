@@ -1,0 +1,60 @@
+# GA Nurse Jobs Scanner — Configuration
+# Edit this file to adjust search parameters
+
+# GitHub Pages URL (update after enabling Pages)
+page_url: "https://claynelson.github.io/ga-nurse-jobs/"
+
+# Send email digest when new jobs found
+email_enabled: true
+
+# Target locations
+locations:
+  - name: "Macon / Warner Robins"
+    search_string: "Macon, Georgia"
+  - name: "Albany / Americus"
+    search_string: "Albany, Georgia"
+  - name: "Valdosta / Tifton"
+    search_string: "Valdosta, Georgia"
+  - name: "Warner Robins"
+    search_string: "Warner Robins, Georgia"
+  - name: "Tifton"
+    search_string: "Tifton, Georgia"
+  - name: "Americus"
+    search_string: "Americus, Georgia"
+
+# Search queries — these get combined with each location
+search_queries:
+  - "PRN infection control nurse"
+  - "PRN infectious disease nurse"
+  - "PRN infection preventionist"
+  - "per diem infection control nurse"
+  - "PRN nurse hospital"
+  - "PRN nurse nursing home"
+  - "infection preventionist"
+  - "infection control RN"
+
+# Keywords — a result must contain at least one of these to be included
+keywords:
+  - "infection"
+  - "infectious"
+  - "infection control"
+  - "infection prevention"
+  - "IP nurse"
+  - "PRN"
+  - "per diem"
+  - "epidemiology"
+  - "communicable disease"
+  - "antimicrobial stewardship"
+
+# Major employers to highlight in results
+highlight_employers:
+  - "Atrium Health Navicent"
+  - "Navicent Health"
+  - "Houston Healthcare"
+  - "Phoebe Putney"
+  - "South Georgia Medical Center"
+  - "Tift Regional"
+  - "PruittHealth"
+  - "Fairview Park Hospital"
+  - "Memorial Health Meadows"
+  - "CommuniCare"
