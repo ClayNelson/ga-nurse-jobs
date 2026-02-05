@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f8f6f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f6f2;padding:32px 16px">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)">
+    <tr><td style="background:#2a7d5f;padding:28px 32px;text-align:center">
+        <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700">&#127973; GA Nurse Jobs</h1>
+        <p style="margin:6px 0 0;color:#c8e6d8;font-size:13px">Daily Job Scan &mdash; {{ scan_time }}</p>
+    </td></tr>
+    <tr><td style="padding:24px 32px 0">
+        <table width="100%" cellpadding="0" cellspacing="0"><tr>
+            <td width="50%" style="text-align:center;padding:16px;background:#fef3eb;border-radius:8px">
+                <div style="font-size:32px;font-weight:700;color:#d4763c">{{ new_count }}</div>
+                <div style="font-size:11px;color:#9a7a65;text-transform:uppercase;letter-spacing:.05em">New Today</div>
+            </td>
+            <td width="16"></td>
+            <td width="50%" style="text-align:center;padding:16px;background:#e8f5ee;border-radius:8px">
+                <div style="font-size:32px;font-weight:700;color:#2a7d5f">{{ total_count }}</div>
+                <div style="font-size:11px;color:#5a8a72;text-transform:uppercase;letter-spacing:.05em">Total Active</div>
+            </td>
+        </tr></table>
+    </td></tr>
+    {% if new_jobs %}
+    <tr><td style="padding:24px 32px 8px">
+        <h2 style="margin:0;font-size:16px;color:#1a1a1a;border-bottom:2px solid #e8e4de;padding-bottom:8px">&#10024; New Listings</h2>
+    </td></tr>
+    {% for job in new_jobs %}
+    <tr><td style="padding:8px 32px">
+        <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e8e4de;border-left:4px solid #d4763c;border-radius:8px;padding:16px"><tr><td>
+            <div style="font-size:15px;font-weight:700;color:#1a1a1a">{{ job.title }}</div>
+            <div style="font-size:13px;color:#2a7d5f;font-weight:500;margin-top:2px">{{ job.company_name }}</div>
+            <div style="font-size:12px;color:#6b6560;margin-top:6px">&#128205; {{ job.location }}{% if job.via %} &middot; {{ job.via }}{% endif %}</div>
+            {% if job.description_snippet %}
+            <div style="font-size:13px;color:#6b6560;margin-top:8px;line-height:1.4">{{ job.description_snippet[:200] }}{% if job.description_snippet|length > 200 %}...{% endif %}</div>
+            {% endif %}
+            {% if job.apply_link %}
+            <div style="margin-top:12px"><a href="{{ job.apply_link }}" style="display:inline-block;background:#2a7d5f;color:#fff;text-decoration:none;font-size:13px;font-weight:600;padding:8px 18px;border-radius:6px">Apply &rarr;</a></div>
+            {% endif %}
+        </td></tr></table>
+    </td></tr>
+    {% endfor %}
+    {% else %}
+    <tr><td style="padding:24px 32px;text-align:center;color:#6b6560"><p>No new listings today &mdash; we'll keep scanning!</p></td></tr>
+    {% endif %}
+    {% if page_url %}
+    <tr><td style="padding:24px 32px;text-align:center">
+        <a href="{{ page_url }}" style="display:inline-block;background:#1a1a1a;color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:12px 28px;border-radius:8px">View All Listings &rarr;</a>
+    </td></tr>
+    {% endif %}
+    <tr><td style="padding:20px 32px;background:#f8f6f2;text-align:center;font-size:12px;color:#9a9590">
+        <p>Automated by GA Nurse Jobs Scanner</p>
+        <p style="margin-top:4px">Areas: Macon, Albany, Valdosta, Tifton, Warner Robins, Americus</p>
+    </td></tr>
+</table>
+</td></tr>
+</table>
+</body>
+</html>
